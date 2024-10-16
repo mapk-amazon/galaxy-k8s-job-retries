@@ -56,7 +56,7 @@ __all__ = ("KubernetesJobRunner",)
 
 @dataclass
 class RetryableDeleteJobState(JobState):
-    def __init__ (self, job_state, k8s_job=None, max_retries=5, attempts=0):
+    def __init__ (self, job_state, k8s_job, max_retries=5, attempts=0):
         self.__dict__ = job_state.__dict__.copy()
         self.init_retryable_job(max_retries, attempts)
         self.k8s_job = k8s_job
